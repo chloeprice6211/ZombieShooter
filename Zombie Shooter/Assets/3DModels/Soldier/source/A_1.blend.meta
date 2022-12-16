@@ -25,7 +25,8 @@ ModelImporter:
       26.585323 mm\n\t'Bone.023' : position error = 6.728333 mm\n\t'Bone.040' : position
       error = 30.811026 mm\nAvatar Rig Configuration mis-match. Inbetween bone rotation
       in configuration does not match rotation in animation file:\n\t'Bone.016' :
-      rotation error = 22.367588 deg\n\t'Bone.039' : rotation error = 75.523743 deg\n"
+      rotation error = 22.367588 deg\n\t'Bone.020' : rotation error = 2.765591 deg\n\t'Bone.039'
+      : rotation error = 75.523743 deg\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -352,7 +353,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Bone.043
+    - boneName: Bone.047
       humanName: Right Middle Proximal
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -360,7 +361,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Bone.047
+    - boneName: Bone.051
       humanName: Right Middle Intermediate
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -368,7 +369,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Bone.051
+    - boneName: Bone.055
       humanName: Right Middle Distal
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -603,7 +604,7 @@ ModelImporter:
     - name: Bone.023
       parentName: Bone.019
       position: {x: 0.0007, y: 0.0714, z: -0.0077}
-      rotation: {x: -0.1561624, y: -0.08414855, z: -0.016385244, w: 0.98400396}
+      rotation: {x: -0.15616241, y: -0.084148556, z: -0.016385246, w: 0.984004}
       scale: {x: 0.9999997, y: 0.99999946, z: 0.99999976}
     - name: Bone.027
       parentName: Bone.023
@@ -663,7 +664,7 @@ ModelImporter:
     - name: Bone.033
       parentName: Bone.029
       position: {x: -0.00000002561137, y: 0.028887883, z: 0.000000014901161}
-      rotation: {x: 0.012172703, y: -0.037923116, z: -0.03930705, w: 0.9984332}
+      rotation: {x: 0.012172701, y: -0.037923116, z: -0.039307047, w: 0.9984332}
       scale: {x: 1.0000001, y: 0.9999998, z: 1}
     - name: Bone.033_end
       parentName: Bone.033
@@ -723,7 +724,7 @@ ModelImporter:
     - name: Bone.040
       parentName: Bone.039
       position: {x: -0.003, y: 0.0332, z: 0.0331}
-      rotation: {x: 0.2731298, y: -0.041681092, z: -0.108951665, w: 0.9548782}
+      rotation: {x: 0.27859965, y: -0.04619496, z: -0.09530284, w: 0.95455}
       scale: {x: 1.0000008, y: 1.0000005, z: 1.0000001}
     - name: Bone.041
       parentName: Bone.040
@@ -743,7 +744,7 @@ ModelImporter:
     - name: Bone.046
       parentName: Bone.042
       position: {x: 0.000000014901161, y: 0.07124044, z: 0.0000000018626451}
-      rotation: {x: -0.1323988, y: 0.20398594, z: -0.075469464, w: 0.96703917}
+      rotation: {x: -0.14789264, y: 0.20797113, z: -0.052745342, w: 0.96545}
       scale: {x: 0.9999996, y: 0.9999997, z: 1.0000001}
     - name: Bone.050
       parentName: Bone.046
@@ -763,7 +764,7 @@ ModelImporter:
     - name: Bone.043
       parentName: Bone.038
       position: {x: -0.0000000037252903, y: 0.03021847, z: -0.000000018626451}
-      rotation: {x: -0.03783573, y: -0.018934365, z: 0.07262309, w: 0.99646175}
+      rotation: {x: -0.037835725, y: -0.018934365, z: 0.07262308, w: 0.99646175}
       scale: {x: 0.9999996, y: 0.9999996, z: 0.9999999}
     - name: Bone.047
       parentName: Bone.043
@@ -818,7 +819,7 @@ ModelImporter:
     - name: Bone.049
       parentName: Bone.045
       position: {x: 0.000000033527613, y: 0.06242811, z: -0.000000007450581}
-      rotation: {x: -0.010590193, y: 0.5145566, z: -0.30459246, w: -0.8014629}
+      rotation: {x: -0.0011002416, y: 0.51648545, z: -0.30856347, w: -0.7987679}
       scale: {x: 1.0000006, y: 1.0000002, z: 0.99999994}
     - name: Bone.053
       parentName: Bone.049
