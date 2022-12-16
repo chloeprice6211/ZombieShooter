@@ -1693,6 +1693,18 @@ Transform:
   m_Father: {fileID: 554253112}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &919875655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2070925441746177913, guid: a1a802ecaf6775746bb2a929fb554ad8,
+    type: 3}
+  m_PrefabInstance: {fileID: 883392864}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &920420404
 GameObject:
   m_ObjectHideFlags: 0
@@ -4069,6 +4081,7 @@ GameObject:
   - component: {fileID: 4416926083347132239}
   - component: {fileID: 6982812147933622149}
   - component: {fileID: 6982812147933622148}
+  - component: {fileID: 6982812147933622150}
   m_Layer: 8
   m_Name: Character
   m_TagString: Player
@@ -4116,11 +4129,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 513
   CinemachineCameraTarget: {fileID: 8338988565591873048}
-  aimVirtualCamera: {fileID: 0}
   TopClamp: 70
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  rotateOnMove: 0
 --- !u!143 &4416926083347132233
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4498,6 +4511,22 @@ MonoBehaviour:
   - m_Rig: {fileID: 1892129440}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &6982812147933622150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926083347132227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed62f80c7183c134a9e5c1721b2bcb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimVirtualCamera: {fileID: 919875655}
+  aimColliderMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!33 &7688801118919984402
 MeshFilter:
   m_ObjectHideFlags: 0
