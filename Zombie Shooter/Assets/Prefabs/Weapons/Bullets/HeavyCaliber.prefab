@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5111922526104350661}
   - component: {fileID: 2190933013112982900}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: HeavyCaliber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3edd1a7465e82134c87da0beb6256cfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletScriptable: {fileID: 11400000, guid: 0623e35512f33934f983ba679221ff7f, type: 2}
+  speed: 75
+  damage: 35
+  explosionForce: 30
 --- !u!54 &5111922526104350661
 Rigidbody:
   m_ObjectHideFlags: 0

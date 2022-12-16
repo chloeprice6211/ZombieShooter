@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa67956869f93c74881fc97beb34e2b1, type: 3}
-  m_Name: MediumBullet 1
+  m_Name: MediumBullet
   m_EditorClassIdentifier: 
   damage: 25
+  speed: 100
+  explosionForce: 20
   bulletType: 1

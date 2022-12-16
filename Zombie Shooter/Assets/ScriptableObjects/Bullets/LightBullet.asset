@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: LightBullet
   m_EditorClassIdentifier: 
   damage: 20
+  speed: 150
+  explosionForce: 10
   bulletType: 0

@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: HeavyBullet
   m_EditorClassIdentifier: 
   damage: 30
+  speed: 75
+  explosionForce: 30
   bulletType: 2

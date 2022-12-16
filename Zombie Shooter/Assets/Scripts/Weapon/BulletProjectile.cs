@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class BulletProjectile : MonoBehaviour
 {
-    public BulletScriptable bulletScriptable;
     Rigidbody rb;
+
+    public float speed;
+    public float damage;
+    public float explosionForce;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
+
     private void Start()
     {
-        rb.AddRelativeForce(Vector3.forward * 50, ForceMode.Impulse);
+        rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Impulse);
     }
-    private void Update()
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        rb.AddExplosionForce(explosionForce, transform.position, 1);
+        Destroy(gameObject);
     }
 }
