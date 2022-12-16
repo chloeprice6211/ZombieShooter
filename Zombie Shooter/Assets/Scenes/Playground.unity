@@ -4526,7 +4526,7 @@ MonoBehaviour:
   aimVirtualCamera: {fileID: 919875655}
   aimColliderMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
 --- !u!33 &7688801118919984402
 MeshFilter:
   m_ObjectHideFlags: 0
