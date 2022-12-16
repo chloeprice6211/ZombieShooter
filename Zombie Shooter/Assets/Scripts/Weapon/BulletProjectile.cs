@@ -24,6 +24,11 @@ public class BulletProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+       
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
         Instantiate(impactParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
