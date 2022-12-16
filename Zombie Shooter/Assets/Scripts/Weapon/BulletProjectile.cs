@@ -10,6 +10,8 @@ public class BulletProjectile : MonoBehaviour
     public float damage;
     public float explosionForce;
 
+    [SerializeField] Transform impactParticle;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -22,7 +24,7 @@ public class BulletProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        rb.AddExplosionForce(explosionForce, transform.position, 1);
+        Instantiate(impactParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

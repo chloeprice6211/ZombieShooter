@@ -133,6 +133,7 @@ MonoBehaviour:
   speed: 75
   damage: 35
   explosionForce: 30
+  impactParticle: {fileID: 400002, guid: 00fedc70b62a31e448e8ccc298257b56, type: 3}
 --- !u!54 &5111922526104350661
 Rigidbody:
   m_ObjectHideFlags: 0
