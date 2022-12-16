@@ -12,6 +12,7 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool aim;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -43,10 +44,16 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+
+        public void OnAim(InputValue value)
+        {
+			Debug.Log(value.isPressed);
+            AimInput(value.isPressed);
+        }
 #endif
 
 
-		public void MoveInput(Vector2 newMoveDirection)
+        public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
 		} 
@@ -65,8 +72,13 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
+        public void AimInput(bool newAimInput)
+        {
+            aim = newAimInput;
+        }
 
-		private void OnApplicationFocus(bool hasFocus)
+
+        private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
 		}
