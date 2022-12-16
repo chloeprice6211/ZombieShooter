@@ -13,7 +13,7 @@ public class BulletProjectile : MonoBehaviour
     }
     private void Start()
     {
-        rb.AddForce(Vector3.forward, ForceMode.Impulse);
+        rb.AddRelativeForce(Vector3.forward * 50, ForceMode.Impulse);
     }
     private void Update()
     {
