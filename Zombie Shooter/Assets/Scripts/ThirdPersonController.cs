@@ -111,6 +111,8 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
+        public bool rotateOnMove;
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -262,7 +264,10 @@ namespace StarterAssets
                     RotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                if (rotateOnMove)
+                {
+                    transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                }
             }
 
 
@@ -347,6 +352,11 @@ namespace StarterAssets
             {
                 _verticalVelocity += Gravity * Time.deltaTime;
             }
+        }
+
+        public void SetRotateOnMove(bool value)
+        {
+            rotateOnMove = value;
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)

@@ -33,6 +33,8 @@ public class ShooterController : MonoBehaviour
     {
         if (_input.aim)
         {
+            _thirdPersonController.SetRotateOnMove(false);
+
             aimVirtualCamera.gameObject.SetActive(true);
 
             Vector3 worldAimTarget = _aimHitPoint;
@@ -44,6 +46,7 @@ public class ShooterController : MonoBehaviour
         }
         else
         {
+            _thirdPersonController.SetRotateOnMove(true);
             aimVirtualCamera.gameObject.SetActive(false);
         }
     }
