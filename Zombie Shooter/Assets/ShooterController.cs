@@ -11,7 +11,6 @@ public class ShooterController : MonoBehaviour
 
     [SerializeField] CinemachineVirtualCamera aimVirtualCamera;
     [SerializeField] LayerMask aimColliderMask;
-    public Transform debugTransform;
 
     Vector3 _aimHitPoint = Vector3.zero;
 
@@ -60,7 +59,6 @@ public class ShooterController : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, aimColliderMask))
         {
-            debugTransform.position = hit.point;
             _aimHitPoint = hit.point;
         }
     }
