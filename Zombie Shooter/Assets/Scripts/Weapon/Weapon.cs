@@ -16,6 +16,8 @@ public class Weapon : MonoBehaviour
     public Transform supportHandPos;
     public Transform muzzleFlash;
 
+    public Sprite weaponIcon;
+
     public bool isReloading;
 
     bool _canShoot = true;
@@ -44,6 +46,7 @@ public class Weapon : MonoBehaviour
         if (currentAmmo < 1) return;
 
         currentAmmo--;
+        UIManager.Instance.UpdateWeaponCurrentAmmo(currentAmmo);
 
         _timeElapsed = 0;
         _canShoot = false;
@@ -68,6 +71,7 @@ public class Weapon : MonoBehaviour
         isReloading = false;
 
         Debug.Log(currentAmmo);
+        UIManager.Instance.UpdateWeaponCurrentAmmo(currentAmmo);
     }
 
 }

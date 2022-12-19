@@ -126,6 +126,8 @@ public class ShooterController : MonoBehaviour
         rigBuilder.Build();
 
         currentWeapon = weapon;
+        UIManager.Instance.SetWeaponUI(currentWeapon);
+
         weaponSupportHandRig.weight = 1;
 
         _animator.enabled = true;

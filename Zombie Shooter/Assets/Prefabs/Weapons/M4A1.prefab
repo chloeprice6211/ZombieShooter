@@ -84,9 +84,10 @@ MonoBehaviour:
   firePosition: {fileID: 7323363252841514944}
   ammoCapacity: 30
   fireRate: 0.13
-  currentAmmo: 0
+  currentAmmo: 30
   supportHandPos: {fileID: 74331452}
   muzzleFlash: {fileID: 400000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}
+  weaponIcon: {fileID: 21300000, guid: c8d17656594418c4288bd53d355d3780, type: 3}
   isReloading: 0
 --- !u!114 &1702279987
 MonoBehaviour:
