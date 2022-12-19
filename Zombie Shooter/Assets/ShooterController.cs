@@ -11,6 +11,7 @@ public class ShooterController : MonoBehaviour
 
     [SerializeField] CinemachineVirtualCamera aimVirtualCamera;
     [SerializeField] LayerMask aimColliderMask;
+    [SerializeField] Transform aimVirtualTarget;
 
     Animator _animator;
 
@@ -41,6 +42,7 @@ public class ShooterController : MonoBehaviour
             aimVirtualCamera.gameObject.SetActive(true);
 
             Vector3 worldAimTarget = _aimHitPoint;
+            aimVirtualTarget.position = _aimHitPoint;
             worldAimTarget.y = transform.position.y;
 
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
