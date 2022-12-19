@@ -1,27 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class Weapon : MonoBehaviour
 {
-    public string weaponName;
+    // components
     public BulletProjectile bullet;
     public Transform firePosition;
-
-    public float ammoCapacity;
-    public float fireRate = .5f;
-
-    public float currentAmmo;
-
     public Transform supportHandPos;
     public Transform muzzleFlash;
-
     public Sprite weaponIcon;
+
+    // mag animation
+    [Space]
+    public GameObject magazine;
+    public Animation magReloadAnimation;
+    public Transform magHolder;
+    [SerializeField] GameObject currentMag;
+
+    // stats
+    [Space]
+    public string weaponName;
+    public float ammoCapacity;
+    public float fireRate = .5f;
+    public float currentAmmo;
 
     public bool isReloading;
 
     bool _canShoot = true;
     float _timeElapsed;
+
+    Rig _weaponSupportRig;
+
 
     private void Start()
     {
@@ -56,22 +67,39 @@ public class Weapon : MonoBehaviour
         Instantiate(muzzleFlash, firePosition.position, Quaternion.LookRotation(target, Vector3.up), firePosition);
     }
 
-    public void Reload()
+    public void Reload(Rig handRig)
     {
+        _weaponSupportRig = handRig;
         StartCoroutine(ReloadRoutine());
     }
 
     IEnumerator ReloadRoutine()
     {
-        Debug.Log("reloading");
-
         isReloading = true;
-        yield return new WaitForSeconds(2f);
-        currentAmmo = ammoCapacity;
-        isReloading = false;
+        _weaponSupportRig.weight = 0;
 
-        Debug.Log(currentAmmo);
+        currentMag.GetComponent<Animation>().Play("MagazineReload");
+
+        yield return new WaitForSeconds(.5f);
+        currentMag.transform.SetParent(null);
+
+        yield return new WaitForSeconds(1f);
+        GameObject newMag = Instantiate(magazine, magHolder);
+        newMag.transform.localPosition = Vector3.zero;
+        newMag.transform.localRotation = Quaternion.identity;
+        magReloadAnimation = newMag.GetComponent<Animation>();
+        magReloadAnimation.Play("MagazineInsert");
+
+        currentMag = newMag;
+        
+        yield return new WaitForSeconds(2f);
+
+        currentAmmo = ammoCapacity;
+        
         UIManager.Instance.UpdateWeaponCurrentAmmo(currentAmmo);
+
+        isReloading = false;
+        _weaponSupportRig.weight = 1;
     }
 
 }

@@ -17,24 +17,28 @@ public class ShooterController : MonoBehaviour
 
     [SerializeField] Transform weaponHolder;
 
+    // IK
     [SerializeField] Rig weaponSupportHandRig;
     [SerializeField] TwoBoneIKConstraint weaponSupportHandConstraint;
-
     [SerializeField] RigBuilder rigBuilder;
 
-    
-
+    // animator related
+    int _reloadHash;
     Animator _animator;
 
     public Weapon currentWeapon;
-
     Vector3 _aimHitPoint = Vector3.zero;
+
+
 
     private void Awake()
     {
         _input = GetComponent<StarterAssetsInputs>();
         _thirdPersonController = GetComponent<ThirdPersonController>();
         _animator = GetComponent<Animator>();
+
+        _reloadHash = Animator.StringToHash("Reload");
+
     }
 
     void Update()
@@ -84,7 +88,8 @@ public class ShooterController : MonoBehaviour
         {
             if (currentWeapon.currentAmmo == currentWeapon.ammoCapacity) return;
 
-            currentWeapon.Reload();
+            _animator.Play(_reloadHash, 2);
+            currentWeapon.Reload(weaponSupportHandRig);
         }
     }
     
@@ -148,6 +153,6 @@ public class ShooterController : MonoBehaviour
         {
             SetWeapon(GameManager.Instance.Weapons[2]);
         }
-        
+
     }
 }
