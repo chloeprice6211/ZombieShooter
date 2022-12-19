@@ -22,6 +22,9 @@ namespace StarterAssets
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
 
+        [Tooltip("stamina capacity")]
+        public float Stamina = 100;
+
         [Tooltip("How fast the character turns to face movement direction")]
         [Range(0.0f, 0.3f)]
         public float RotationSmoothTime = 0.12f;
@@ -81,6 +84,7 @@ namespace StarterAssets
         private float _cinemachineTargetPitch;
 
         // player
+        private float _currentMoveSpeed;
         private float _speed;
         private float _animationBlend;
         private float _targetRotation = 0.0f;
@@ -216,14 +220,22 @@ namespace StarterAssets
 
         private void Move()
         {
-            // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            float targetSpeed = _input.sprint && Stamina > 0 && !_input.aim ? SprintSpeed : MoveSpeed;
 
-            // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
+            if(targetSpeed == SprintSpeed)
+            {
+                StaminaRegen(-5);
+            }
 
-            // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-            // if there is no input, set the target speed to 0
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+            if (_input.move == Vector2.zero)
+            {
+                StaminaRegen(5);
+                targetSpeed = 0.0f;
+            }
+            else if(targetSpeed == MoveSpeed)
+            {
+                StaminaRegen(3);
+            }
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -285,6 +297,12 @@ namespace StarterAssets
             }
         }
 
+        private void StaminaRegen(float regenValue)
+        {
+            Stamina += regenValue * Time.deltaTime;
+            UIManager.Instance.DisplayStaminaState(Stamina);
+        }
+
         private void JumpAndGravity()
         {
             if (Grounded)
@@ -310,6 +328,8 @@ namespace StarterAssets
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+                    StaminaRegen(-250);
 
                     // update animator if using character
                     if (_hasAnimator)
