@@ -220,7 +220,7 @@ namespace StarterAssets
 
         private void Move()
         {
-            float targetSpeed = _input.sprint && Stamina > 0 ? SprintSpeed : MoveSpeed;
+            float targetSpeed = _input.sprint && Stamina > 0 && !_input.aim ? SprintSpeed : MoveSpeed;
 
             if(targetSpeed == SprintSpeed)
             {
@@ -328,6 +328,8 @@ namespace StarterAssets
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+                    StaminaRegen(-250);
 
                     // update animator if using character
                     if (_hasAnimator)
