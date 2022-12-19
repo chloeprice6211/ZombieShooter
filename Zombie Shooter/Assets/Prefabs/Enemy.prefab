@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d605c64e4cd3d4d9fb4157df3579a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthAmount: 550
+  healthAmount: 100
   hpFillImage: {fileID: 2335790130544742119}
   player: {fileID: 0}
 --- !u!195 &167340912
@@ -731,6 +731,20 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &1247482182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305664373689959982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ca7d53a76940642b175e323630fff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 8456070463173469665}
+  type: 0
 --- !u!1 &2338275890224181697 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3086436065929644917, guid: 4df8169e48c745049a9c4355713bc135,

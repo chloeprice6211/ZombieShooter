@@ -14,8 +14,6 @@ public class Enemy : MonoBehaviour
     NavMeshAgent _agent;
     Ragdoll _ragdoll;
 
-    GameObject testPrefab;
-
     [SerializeField] GameObject player;
 
     private void Start()
@@ -24,15 +22,12 @@ public class Enemy : MonoBehaviour
         _currentHealth = healthAmount;
         _ragdoll = GetComponent<Ragdoll>();
 
+        player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(testPrefab);
-        }
-
         if (!_agent.enabled) return;
 
         ChasePlayer();
