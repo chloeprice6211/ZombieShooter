@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 using Cinemachine;
+using UnityEngine.Animations.Rigging;
+using UnityEngine.Animations;
 
 public class ShooterController : MonoBehaviour
 {
@@ -12,6 +14,13 @@ public class ShooterController : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera aimVirtualCamera;
     [SerializeField] LayerMask aimColliderMask;
     [SerializeField] Transform aimVirtualTarget;
+
+    [SerializeField] Transform weaponHolder;
+
+    [SerializeField] Rig weaponSupportHandRig;
+    [SerializeField] TwoBoneIKConstraint weaponSupportHandConstraint;
+
+    [SerializeField] RigBuilder rigBuilder;
 
     Animator _animator;
 
@@ -28,6 +37,8 @@ public class ShooterController : MonoBehaviour
 
     void Update()
     {
+        Test();
+
         Aim();
         Shoot();
         HandleAimRaycast();
@@ -78,6 +89,49 @@ public class ShooterController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, aimColliderMask))
         {
             _aimHitPoint = hit.point;
+        }
+    }
+
+
+    void SetWeapon(Weapon weapon)
+    {
+        _animator.enabled = false;
+        weaponSupportHandRig.weight = 0;
+
+        if (currentWeapon != null)
+        {
+            Destroy(currentWeapon.gameObject);
+        }
+
+        weapon = Instantiate(weapon, weaponHolder);
+
+        AnimatorJobExtensions.UnbindAllStreamHandles(_animator);
+        AnimatorJobExtensions.UnbindAllSceneHandles(_animator);
+
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
+
+        weaponSupportHandConstraint.data.target = weapon.supportHandPos;
+
+        _animator.Rebind();
+        rigBuilder.Build();
+
+        currentWeapon = weapon;
+        weaponSupportHandRig.weight = 1;
+
+        _animator.enabled = true;
+
+    }
+
+    void Test()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SetWeapon(GameManager.Instance.Weapons[0]);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SetWeapon(GameManager.Instance.Weapons[1]);
         }
     }
 }

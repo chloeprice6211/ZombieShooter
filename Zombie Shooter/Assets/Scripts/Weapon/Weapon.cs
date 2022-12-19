@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour
     public BulletProjectile bullet;
     public Transform firePosition;
 
+    public Transform supportHandPos;
+
     public void FireProjectile(Vector3 targetPosition)
     {
         Vector3 target = (targetPosition - firePosition.position).normalized;
