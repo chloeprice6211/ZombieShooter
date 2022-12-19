@@ -132,5 +132,9 @@ public class ShooterController : MonoBehaviour
         {
             SetWeapon(GameManager.Instance.Weapons[1]);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SetWeapon(GameManager.Instance.Weapons[2]);
+        }
     }
 }
