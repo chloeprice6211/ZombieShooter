@@ -195,6 +195,6 @@ MonoBehaviour:
   weaponName: AK47
   bullet: {fileID: 6747160648590829569, guid: f751872160ff9c1468adc0019af4e735, type: 3}
   firePosition: {fileID: 350867809550384448}
-  fireRate: 0.25
+  fireRate: 0.18
   supportHandPos: {fileID: 135074967143331202}
   muzzleFlash: {fileID: 400000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}

@@ -24,11 +24,6 @@ public class BulletProjectile : MonoBehaviour
         rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Impulse);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-       
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         switch (collision.gameObject.layer)
