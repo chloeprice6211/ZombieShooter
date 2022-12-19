@@ -2035,7 +2035,7 @@ MonoBehaviour:
   currentAmmo: 20
   shootAudioSource: {fileID: 7722295954137228004}
   reloadAudioSource: {fileID: 1792289154391464774}
-  shootSound: {fileID: 8300000, guid: 8b7ac98f62877e34fb13467f61a06f2a, type: 3}
+  shootSound: {fileID: 8300000, guid: 35a5506d998c81446b30774af2414a92, type: 3}
   isReloading: 0
   insertMagClip: {fileID: 7400000, guid: 3e770f54f141b6c4ea47eb66f9f0406e, type: 2}
 --- !u!82 &7722295954137228004
@@ -2050,7 +2050,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
