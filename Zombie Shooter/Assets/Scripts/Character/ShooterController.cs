@@ -77,7 +77,7 @@ public class ShooterController : MonoBehaviour
     }
     private void Shoot()
     {
-        if (_input.shoot && _input.aim)
+        if (_input.shoot && _input.aim && !currentWeapon.isReloading)
         {
             currentWeapon.FireProjectile(_aimHitPoint);
         }
@@ -88,8 +88,34 @@ public class ShooterController : MonoBehaviour
         {
             if (currentWeapon.currentAmmo == currentWeapon.ammoCapacity) return;
 
+            StartCoroutine(SmoothReloadRoutine());
             _animator.Play(_reloadHash, 2);
             currentWeapon.Reload(weaponSupportHandRig);
+        }
+
+        IEnumerator SmoothReloadRoutine()
+        {
+            float value = 0f;
+
+            if(_animator.GetLayerWeight(2) > .9f)
+            {
+                Debug.Log(_animator.GetLayerWeight(2) + "!");
+                _animator.SetLayerWeight(2, 0);
+            }
+            else
+            {
+                Debug.Log(_animator.GetLayerWeight(2));
+            }
+
+            while(_animator.GetLayerWeight(2) < 1)
+            {
+                value += Time.deltaTime * 3;
+                _animator.SetLayerWeight(2, value);
+
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(3f);
         }
     }
     

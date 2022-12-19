@@ -76,7 +76,12 @@ public class Weapon : MonoBehaviour
     IEnumerator ReloadRoutine()
     {
         isReloading = true;
-        _weaponSupportRig.weight = 0;
+
+        while (_weaponSupportRig.weight > 0)
+        {
+            _weaponSupportRig.weight -= Time.deltaTime * 5;
+            yield return null;
+        }
 
         currentMag.GetComponent<Animation>().Play("MagazineReload");
 
@@ -92,14 +97,19 @@ public class Weapon : MonoBehaviour
 
         currentMag = newMag;
         
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.2f);
 
         currentAmmo = ammoCapacity;
         
         UIManager.Instance.UpdateWeaponCurrentAmmo(currentAmmo);
 
         isReloading = false;
-        _weaponSupportRig.weight = 1;
+
+        while(_weaponSupportRig.weight < 1)
+        {
+            _weaponSupportRig.weight += Time.deltaTime * 5;
+            yield return null;
+        } 
     }
 
 }
