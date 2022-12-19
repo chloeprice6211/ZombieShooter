@@ -112,7 +112,7 @@ public class ShooterController : MonoBehaviour
 
         weaponSupportHandConstraint.data.target = weapon.supportHandPos;
 
-        _animator.Rebind();
+        //_animator.Rebind();
         rigBuilder.Build();
 
         currentWeapon = weapon;
