@@ -5385,7 +5385,7 @@ MonoBehaviour:
   aimVirtualCamera: {fileID: 919875655}
   aimColliderMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1025
   aimVirtualTarget: {fileID: 1226708607}
   weaponHolder: {fileID: 1171749839}
   weaponSupportHandRig: {fileID: 2136720429}

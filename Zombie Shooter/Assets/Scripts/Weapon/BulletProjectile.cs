@@ -12,7 +12,7 @@ public class BulletProjectile : MonoBehaviour
 
     IDamagable _impactedObject;
 
-    [SerializeField] Transform impactParticle;
+    [SerializeField] List<Transform> impactParticle;
 
     private void Awake()
     {
@@ -31,7 +31,15 @@ public class BulletProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Instantiate(impactParticle, transform.position, Quaternion.identity);
+        switch (collision.gameObject.layer)
+        {
+            case 0:
+                Instantiate(impactParticle[0], transform.position, Quaternion.identity);
+                break;
+            case 10:
+                Instantiate(impactParticle[1], transform.position, Quaternion.identity);
+                break;
+        }
 
         if(collision.gameObject.TryGetComponent(out _impactedObject))
         {
