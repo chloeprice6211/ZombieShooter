@@ -82,9 +82,12 @@ MonoBehaviour:
   weaponName: M4A1
   bullet: {fileID: 6747160648590829569, guid: 6a26c0c9939ccf649ab44b2fec4c32b5, type: 3}
   firePosition: {fileID: 7323363252841514944}
+  ammoCapacity: 30
   fireRate: 0.13
+  currentAmmo: 0
   supportHandPos: {fileID: 74331452}
   muzzleFlash: {fileID: 400000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}
+  isReloading: 0
 --- !u!114 &1702279987
 MonoBehaviour:
   m_ObjectHideFlags: 0

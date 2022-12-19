@@ -40,7 +40,7 @@ public class ShooterController : MonoBehaviour
     void Update()
     {
         Test();
-
+        Reload();
         Aim();
         Shoot();
         HandleAimRaycast();
@@ -71,7 +71,6 @@ public class ShooterController : MonoBehaviour
             _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 0, Time.deltaTime * 15f));
         }
     }
-
     private void Shoot()
     {
         if (_input.shoot && _input.aim)
@@ -79,6 +78,16 @@ public class ShooterController : MonoBehaviour
             currentWeapon.FireProjectile(_aimHitPoint);
         }
     }
+    private void Reload()
+    {
+        if (_input.reload && !currentWeapon.isReloading)
+        {
+            if (currentWeapon.currentAmmo == currentWeapon.ammoCapacity) return;
+
+            currentWeapon.Reload();
+        }
+    }
+    
 
     void HandleAimRaycast()
     {
@@ -92,7 +101,6 @@ public class ShooterController : MonoBehaviour
             _aimHitPoint = hit.point;
         }
     }
-
 
     void SetWeapon(Weapon weapon)
     {
