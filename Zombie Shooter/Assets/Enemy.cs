@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour, IDamagable
 {
     public float healthAmount = 100f;
+    float _currentHealth;
 
     [SerializeField] Image hpFillImage;
+
+    private void Start()
+    {
+        _currentHealth = healthAmount;
+    }
 
     public void OnDeath()
     {
@@ -16,9 +23,9 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void TakeDamage(float damage)
     {
-        healthAmount -= damage;
+        _currentHealth -= damage;
 
-        hpFillImage.fillAmount = healthAmount / 100;
+        hpFillImage.fillAmount = _currentHealth / healthAmount;
 
         if(healthAmount < 1)
         {
