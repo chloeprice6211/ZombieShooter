@@ -192,13 +192,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8a00714a28ebf34aa15da7bcc79ca81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: AK47
   bullet: {fileID: 6747160648590829569, guid: f751872160ff9c1468adc0019af4e735, type: 3}
   firePosition: {fileID: 350867809550384448}
-  ammoCapacity: 30
-  fireRate: 0.18
-  currentAmmo: 30
   supportHandPos: {fileID: 135074967143331202}
   muzzleFlash: {fileID: 400000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}
   weaponIcon: {fileID: 21300000, guid: 11469c5e4ba363a47984006a5bb22ec9, type: 3}
+  magazine: {fileID: 0}
+  magReloadAnimation: {fileID: 0}
+  magHolder: {fileID: 0}
+  currentMag: {fileID: 0}
+  weaponName: AK47
+  ammoCapacity: 30
+  fireRate: 0.18
+  currentAmmo: 30
+  shootAudioSource: {fileID: 0}
+  reloadAudioSource: {fileID: 0}
+  shootSound: {fileID: 0}
   isReloading: 0
+  insertMagClip: {fileID: 0}
