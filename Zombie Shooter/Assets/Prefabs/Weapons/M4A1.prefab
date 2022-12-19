@@ -82,6 +82,7 @@ MonoBehaviour:
   weaponName: M4A1
   bullet: {fileID: 6747160648590829569, guid: 6a26c0c9939ccf649ab44b2fec4c32b5, type: 3}
   firePosition: {fileID: 7323363252841514944}
+  fireRate: 0.25
   supportHandPos: {fileID: 74331452}
 --- !u!114 &1702279987
 MonoBehaviour:

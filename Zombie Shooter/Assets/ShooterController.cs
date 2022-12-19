@@ -74,7 +74,6 @@ public class ShooterController : MonoBehaviour
     {
         if (_input.shoot && _input.aim)
         {
-            _input.shoot = false;
             currentWeapon.FireProjectile(_aimHitPoint);
         }
     }
