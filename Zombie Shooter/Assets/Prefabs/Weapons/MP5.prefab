@@ -775,6 +775,7 @@ MonoBehaviour:
   weaponName: MP5
   bullet: {fileID: 6747160648590829569, guid: 8762085b94a37cc418f912b03a2dece2, type: 3}
   firePosition: {fileID: 4739440565260070160}
+  fireRate: 0.2
   supportHandPos: {fileID: 2973701790573797728}
 --- !u!1 &8077680353698186297
 GameObject:
