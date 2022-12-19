@@ -2458,7 +2458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b342d8ce5c2fd48b8fa3147d48d1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
+  m_Weight: 0
   m_Effectors: []
 --- !u!1 &35078849758742772
 GameObject:
@@ -6001,7 +6001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RigLayers:
   - m_Rig: {fileID: 620604363}
-    m_Active: 1
+    m_Active: 0
   - m_Rig: {fileID: 2136720429}
     m_Active: 1
   m_Effectors:
@@ -6031,6 +6031,9 @@ MonoBehaviour:
     m_Bits: 1
   aimVirtualTarget: {fileID: 1226708607}
   weaponHolder: {fileID: 1171749839}
+  weaponSupportHandRig: {fileID: 2136720429}
+  weaponSupportHandConstraint: {fileID: 788548207}
+  rigBuilder: {fileID: 6982812147933622149}
   currentWeapon: {fileID: 1111278156}
 --- !u!4 &6984263939379349553
 Transform:
