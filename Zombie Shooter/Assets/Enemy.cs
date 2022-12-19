@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour, IDamagable
@@ -10,10 +11,25 @@ public class Enemy : MonoBehaviour, IDamagable
     float _currentHealth;
 
     [SerializeField] Image hpFillImage;
+    NavMeshAgent _agent;
+
+    [SerializeField] GameObject player;
 
     private void Start()
     {
+        _agent = GetComponent<NavMeshAgent>();
         _currentHealth = healthAmount;
+
+    }
+
+    private void Update()
+    {
+        ChasePlayer();
+    }
+
+    void ChasePlayer()
+    {
+        _agent.SetDestination(player.transform.position);
     }
 
     public void OnDeath()
