@@ -22,6 +22,8 @@ public class ShooterController : MonoBehaviour
 
     [SerializeField] RigBuilder rigBuilder;
 
+    public static AudioSource ImpactAudioSource;
+
     Animator _animator;
 
     public Weapon currentWeapon;
