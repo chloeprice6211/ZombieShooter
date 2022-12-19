@@ -303,13 +303,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4028240847522166309}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.35, z: -3.167}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0.41145056, y: 0.12810111, z: -0.0029000044}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 8907296557310635378}
-  m_RootOrder: 11
+  m_Father: {fileID: 5156359393481670311}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6733433508998435566
 GameObject:
@@ -757,6 +757,7 @@ Transform:
   m_Children:
   - {fileID: 8907296557310635378}
   - {fileID: 2973701790573797728}
+  - {fileID: 4739440565260070160}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -777,6 +778,7 @@ MonoBehaviour:
   firePosition: {fileID: 4739440565260070160}
   fireRate: 0.1
   supportHandPos: {fileID: 2973701790573797728}
+  muzzleFlash: {fileID: 400000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}
 --- !u!1 &8077680353698186297
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,7 +901,6 @@ Transform:
   - {fileID: 4074180384824781673}
   - {fileID: 1674166300808939133}
   - {fileID: 4200482871216957945}
-  - {fileID: 4739440565260070160}
   m_Father: {fileID: 5156359393481670311}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}

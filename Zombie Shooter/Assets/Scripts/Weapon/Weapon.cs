@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     public float fireRate = .5f;
 
     public Transform supportHandPos;
+    public Transform muzzleFlash;
 
     bool _canShoot = true;
     float _timeElapsed;
@@ -36,6 +37,7 @@ public class Weapon : MonoBehaviour
 
         Vector3 target = (targetPosition - firePosition.position).normalized;
         Instantiate(bullet, firePosition.position, Quaternion.LookRotation(target, Vector3.up));
+        Instantiate(muzzleFlash, firePosition.position, Quaternion.LookRotation(target, Vector3.up), firePosition);
     }
 
 }

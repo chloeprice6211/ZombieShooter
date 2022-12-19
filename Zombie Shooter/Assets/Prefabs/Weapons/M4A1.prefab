@@ -84,6 +84,7 @@ MonoBehaviour:
   firePosition: {fileID: 7323363252841514944}
   fireRate: 0.25
   supportHandPos: {fileID: 74331452}
+  muzzleFlash: {fileID: 400000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}
 --- !u!114 &1702279987
 MonoBehaviour:
   m_ObjectHideFlags: 0
