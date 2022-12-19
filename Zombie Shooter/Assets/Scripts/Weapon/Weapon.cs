@@ -26,6 +26,12 @@ public class Weapon : MonoBehaviour
     public float fireRate = .5f;
     public float currentAmmo;
 
+    //audio
+    [SerializeField] AudioSource shootAudioSource;
+    [SerializeField] AudioSource reloadAudioSource;
+
+    [SerializeField] AudioClip shootSound;
+
     public bool isReloading;
 
     bool _canShoot = true;
@@ -59,6 +65,8 @@ public class Weapon : MonoBehaviour
         currentAmmo--;
         UIManager.Instance.UpdateWeaponCurrentAmmo(currentAmmo);
 
+        shootAudioSource.PlayOneShot(shootSound);
+
         _timeElapsed = 0;
         _canShoot = false;
 
@@ -69,6 +77,7 @@ public class Weapon : MonoBehaviour
 
     public void Reload(Rig handRig)
     {
+        reloadAudioSource.Play();
         _weaponSupportRig = handRig;
         StartCoroutine(ReloadRoutine());
     }
