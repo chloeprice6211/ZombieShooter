@@ -39,6 +39,8 @@ public class Weapon : MonoBehaviour
 
     Rig _weaponSupportRig;
 
+    [SerializeField] AnimationClip insertMagClip; 
+
 
     private void Start()
     {
@@ -102,7 +104,7 @@ public class Weapon : MonoBehaviour
         newMag.transform.localPosition = Vector3.zero;
         newMag.transform.localRotation = Quaternion.identity;
         magReloadAnimation = newMag.GetComponent<Animation>();
-        magReloadAnimation.Play("MagazineInsert");
+        magReloadAnimation.Play(insertMagClip.name);
 
         currentMag = newMag;
         

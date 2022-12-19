@@ -790,6 +790,7 @@ MonoBehaviour:
   reloadAudioSource: {fileID: 2053168709790893309}
   shootSound: {fileID: 8300000, guid: 8b7ac98f62877e34fb13467f61a06f2a, type: 3}
   isReloading: 0
+  insertMagClip: {fileID: 7400000, guid: 08a6687aa00b6e546b6de07489044906, type: 2}
 --- !u!82 &-3970441366622383315
 AudioSource:
   m_ObjectHideFlags: 0
