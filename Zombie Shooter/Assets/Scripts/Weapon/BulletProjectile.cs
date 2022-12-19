@@ -10,6 +10,8 @@ public class BulletProjectile : MonoBehaviour
     public float damage;
     public float explosionForce;
 
+    IDamagable _impactedObject;
+
     [SerializeField] Transform impactParticle;
 
     private void Awake()
@@ -30,6 +32,12 @@ public class BulletProjectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Instantiate(impactParticle, transform.position, Quaternion.identity);
+
+        if(collision.gameObject.TryGetComponent(out _impactedObject))
+        {
+            _impactedObject.TakeDamage(damage);
+        }
+
         Destroy(gameObject);
     }
 }

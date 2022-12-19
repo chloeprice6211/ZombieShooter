@@ -136,5 +136,6 @@ public class ShooterController : MonoBehaviour
         {
             SetWeapon(GameManager.Instance.Weapons[2]);
         }
+        
     }
 }
