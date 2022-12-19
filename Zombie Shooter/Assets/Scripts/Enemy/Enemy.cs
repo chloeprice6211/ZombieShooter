@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public float healthAmount = 100f;
-    float _currentHealth;
+    public float currentHealth;
 
     [SerializeField] Image hpFillImage;
     NavMeshAgent _agent;
@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _currentHealth = healthAmount;
+        currentHealth = healthAmount;
         _ragdoll = GetComponent<Ragdoll>();
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -42,15 +42,17 @@ public class Enemy : MonoBehaviour
     {
         _ragdoll.ActiveRagdoll();
         _agent.enabled = false;
+
+        GameManager.Instance.ImpactAudioSource.PlayOneShot(GameManager.Instance.killSound);
     }
 
     public void TakeDamage(float damage)
     {
-        _currentHealth -= damage;
+        currentHealth -= damage;
 
-        hpFillImage.fillAmount = _currentHealth / healthAmount;
+        hpFillImage.fillAmount = currentHealth / healthAmount;
 
-        if(_currentHealth < 1)
+        if(currentHealth < 1)
         {
             OnDeath();
         }

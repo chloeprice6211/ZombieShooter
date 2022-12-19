@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public AudioSource ImpactAudioSource;
+
+    public AudioClip bodyShotClip;
+    public AudioClip headShotClip;
+    public AudioClip killSound;
+
     public List<Weapon> Weapons;
 
     private void Awake()
