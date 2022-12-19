@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
         hpFillImage.fillAmount = _currentHealth / healthAmount;
 
-        if(healthAmount < 1)
+        if(_currentHealth < 1)
         {
             OnDeath();
         }
