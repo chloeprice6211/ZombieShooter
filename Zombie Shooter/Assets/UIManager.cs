@@ -26,4 +26,5 @@ public class UIManager : MonoBehaviour
     {
         staminaStateFilledImg.fillAmount = currentStaminaState / 100;
     }
+
 }
