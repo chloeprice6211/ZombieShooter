@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     NavMeshAgent _agent;
     Ragdoll _ragdoll;
 
+    GameObject testPrefab;
+
     [SerializeField] GameObject player;
 
     private void Start()
@@ -26,6 +28,13 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(testPrefab);
+        }
+
+        if (!_agent.enabled) return;
+
         ChasePlayer();
     }
 
@@ -37,7 +46,7 @@ public class Enemy : MonoBehaviour
     public void OnDeath()
     {
         _ragdoll.ActiveRagdoll();
-        Destroy(gameObject);
+        _agent.enabled = false;
     }
 
     public void TakeDamage(float damage)
