@@ -22,10 +22,14 @@ public class Enemy : MonoBehaviour
         _currentHealth = healthAmount;
         _ragdoll = GetComponent<Ragdoll>();
 
+        player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     private void Update()
     {
+        if (!_agent.enabled) return;
+
         ChasePlayer();
     }
 
@@ -37,7 +41,7 @@ public class Enemy : MonoBehaviour
     public void OnDeath()
     {
         _ragdoll.ActiveRagdoll();
-        Destroy(gameObject);
+        _agent.enabled = false;
     }
 
     public void TakeDamage(float damage)

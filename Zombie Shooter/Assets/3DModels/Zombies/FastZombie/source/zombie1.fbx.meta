@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 476463712a985104fb6c9c31e299ed11
+guid: 70ae6fdc9d291474bbb047012b59e3fd
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: -203655887218126122
-    second: mixamo.com
+      74: -1498010087492872569
+    second: CINEMA_4D_Main
   externalObjects: {}
   materials:
     materialImportMode: 2
