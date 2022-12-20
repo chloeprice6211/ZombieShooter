@@ -21,6 +21,7 @@ public class ShooterController : MonoBehaviour
     [SerializeField] Rig weaponSupportHandRig;
     [SerializeField] TwoBoneIKConstraint weaponSupportHandConstraint;
     [SerializeField] RigBuilder rigBuilder;
+    [SerializeField] Rig aimRig;
 
     // animator related
     int _reloadHash;
@@ -64,6 +65,7 @@ public class ShooterController : MonoBehaviour
 
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
             transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20);
+            aimRig.weight = Mathf.Lerp(aimRig.weight, 1, Time.deltaTime * 3);
 
             _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 1, Time.deltaTime * 15f));
         }
@@ -73,6 +75,7 @@ public class ShooterController : MonoBehaviour
             aimVirtualCamera.gameObject.SetActive(false);
 
             _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 0, Time.deltaTime * 15f));
+            aimRig.weight = Mathf.Lerp(aimRig.weight, 0, Time.deltaTime * 3);
         }
     }
     private void Shoot()
@@ -179,7 +182,7 @@ public class ShooterController : MonoBehaviour
         {
             SetWeapon(GameManager.Instance.Weapons[2]);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             SetWeapon(GameManager.Instance.Weapons[3]);
         }
