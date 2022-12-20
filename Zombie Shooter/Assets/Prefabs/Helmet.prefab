@@ -648,10 +648,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6bf0378b3fa8845a48ae4fc96bc403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOn: 0
   lens: {fileID: 5599819395228052249}
   activateNVGClip: {fileID: 7400000, guid: 6cac32c03196a3742a4e06e85da7a7db, type: 2}
   deactivateNVGClip: {fileID: 7400000, guid: 1e21e416f979e814cb0bdebf2594d29f, type: 2}
-  isActive: 0
 --- !u!1 &1243043777617451874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,7 +2125,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7470171051447888292, guid: cb215cbba9337a1459967f2204dc5389, type: 3}
+  - {fileID: 2100000, guid: c3b8532002e465041926e3c588e046b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

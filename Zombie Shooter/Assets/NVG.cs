@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NVG : MonoBehaviour
+public class NVG : HelmetDevice
 {
     public Transform lens;
     Animation _animation;
 
     [SerializeField] AnimationClip activateNVGClip;
     [SerializeField] AnimationClip deactivateNVGClip;
-
-    public bool isActive;
-
 
     private void Awake()
     {
@@ -20,9 +17,7 @@ public class NVG : MonoBehaviour
 
     public void ActivateOrDeactivate()
     {
-        isActive = !isActive;
-
-        if (isActive)
+        if (isOn)
         {
             _animation.Play(deactivateNVGClip.name);
         }
@@ -30,6 +25,8 @@ public class NVG : MonoBehaviour
         {
             _animation.Play(activateNVGClip.name);
         }
+
+        base.ActivateOrDeactivateDevice();
         
     }
 }
