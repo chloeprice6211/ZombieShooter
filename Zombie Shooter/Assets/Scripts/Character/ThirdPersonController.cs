@@ -224,17 +224,17 @@ namespace StarterAssets
 
             if(targetSpeed == SprintSpeed)
             {
-                StaminaRegen(-5);
+                StaminaRegen(-10);
             }
 
             if (_input.move == Vector2.zero)
             {
-                StaminaRegen(5);
+                StaminaRegen(25);
                 targetSpeed = 0.0f;
             }
-            else if(targetSpeed == MoveSpeed)
+            else if (targetSpeed == MoveSpeed)
             {
-                StaminaRegen(3);
+                StaminaRegen(10);
             }
 
             // a reference to the players current horizontal velocity
@@ -299,6 +299,11 @@ namespace StarterAssets
 
         private void StaminaRegen(float regenValue)
         {
+            if(Stamina > 100)
+            {
+                Stamina = 100;
+            }
+
             Stamina += regenValue * Time.deltaTime;
             UIManager.Instance.DisplayStaminaState(Stamina);
         }
@@ -324,12 +329,12 @@ namespace StarterAssets
                 }
 
                 // Jump
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+                if (_input.jump && _jumpTimeoutDelta <= 0.0f && Stamina > 25)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
-                    StaminaRegen(-250);
+                    StaminaRegen(-300);
 
                     // update animator if using character
                     if (_hasAnimator)

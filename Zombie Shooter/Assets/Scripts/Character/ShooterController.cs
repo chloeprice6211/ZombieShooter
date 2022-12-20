@@ -18,10 +18,10 @@ public class ShooterController : MonoBehaviour
     [SerializeField] Transform weaponHolder;
 
     // IK
-    [SerializeField] Rig weaponSupportHandRig;
     [SerializeField] TwoBoneIKConstraint weaponSupportHandConstraint;
     [SerializeField] RigBuilder rigBuilder;
     [SerializeField] Rig aimRig;
+    [SerializeField] Rig weaponSupportHandRig;
 
     // animator related
     int _reloadHash;
@@ -29,8 +29,6 @@ public class ShooterController : MonoBehaviour
 
     public Weapon currentWeapon;
     Vector3 _aimHitPoint = Vector3.zero;
-
-
 
     private void Awake()
     {
@@ -40,6 +38,11 @@ public class ShooterController : MonoBehaviour
 
         _reloadHash = Animator.StringToHash("Reload");
 
+    }
+
+    private void Start()
+    {
+        SetWeapon(GameManager.Instance.Weapons[0]);
     }
 
     void Update()
@@ -65,7 +68,11 @@ public class ShooterController : MonoBehaviour
 
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
             transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20);
-            aimRig.weight = Mathf.Lerp(aimRig.weight, 1, Time.deltaTime * 3);
+
+            if (!currentWeapon.isReloading)
+            {
+                aimRig.weight = Mathf.Lerp(aimRig.weight, 1, Time.deltaTime * 3);
+            }
 
             _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 1, Time.deltaTime * 15f));
         }
@@ -75,7 +82,12 @@ public class ShooterController : MonoBehaviour
             aimVirtualCamera.gameObject.SetActive(false);
 
             _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 0, Time.deltaTime * 15f));
-            aimRig.weight = Mathf.Lerp(aimRig.weight, 0, Time.deltaTime * 3);
+
+            if(aimRig.weight > 0)
+            {
+                aimRig.weight = Mathf.Lerp(aimRig.weight, 0, Time.deltaTime * 3);
+            }
+          
         }
     }
     private void Shoot()
@@ -93,35 +105,47 @@ public class ShooterController : MonoBehaviour
 
             StartCoroutine(SmoothReloadRoutine());
             _animator.Play(_reloadHash, 2);
-            currentWeapon.Reload(weaponSupportHandRig);
+            currentWeapon.Reload();
         }
 
         IEnumerator SmoothReloadRoutine()
         {
             float value = 0f;
 
-            if(_animator.GetLayerWeight(2) > .9f)
-            {
-                Debug.Log(_animator.GetLayerWeight(2) + "!");
-                _animator.SetLayerWeight(2, 0);
-            }
-            else
-            {
-                Debug.Log(_animator.GetLayerWeight(2));
-            }
+            _animator.SetLayerWeight(2, 0);
 
-            while(_animator.GetLayerWeight(2) < 1)
+            while (_animator.GetLayerWeight(2) < 1)
             {
-                value += Time.deltaTime * 3;
+                value += Time.deltaTime * 3f;
+
                 _animator.SetLayerWeight(2, value);
+
+                aimRig.weight -= Time.deltaTime * 3f;
+                weaponSupportHandRig.weight -= Time.deltaTime * 3f;
 
                 yield return null;
             }
 
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2.5f);
+
+            while (_animator.GetLayerWeight(2) > 0)
+            {
+                value -= Time.deltaTime * 3f;
+                _animator.SetLayerWeight(2, value);
+
+                if (_input.aim)
+                {
+                    aimRig.weight += Time.deltaTime * 3f;
+                }
+                
+                weaponSupportHandRig.weight += Time.deltaTime * 3f;
+
+                yield return null;
+            }
+
         }
     }
-    
+
 
     void HandleAimRaycast()
     {
@@ -156,7 +180,6 @@ public class ShooterController : MonoBehaviour
 
         weaponSupportHandConstraint.data.target = weapon.supportHandPos;
 
-        //_animator.Rebind();
         rigBuilder.Build();
 
         currentWeapon = weapon;

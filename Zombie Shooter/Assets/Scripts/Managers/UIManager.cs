@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
 
     public void DisplayStaminaState(float currentStaminaState)
     {
-        staminaStateFilledImg.fillAmount = currentStaminaState / 100;
+        staminaStateFilledImg.fillAmount = Mathf.Lerp(staminaStateFilledImg.fillAmount, currentStaminaState/100, Time.deltaTime);
     }
 
     public void SetWeaponUI(Weapon weapon)
