@@ -957,7 +957,7 @@ ModelImporter:
     - name: finger_thumb_1_R
       parentName: finger_thumb_0_R
       position: {x: 1.698803, y: 0.00002479549, z: -0.00007820129}
-      rotation: {x: 0.0017499632, y: 0.0072633927, z: -0.031484142, w: 0.9994763}
+      rotation: {x: 0.0017499629, y: 0.0072633927, z: -0.031484134, w: 0.9994763}
       scale: {x: 0.9999999, y: 1.0000004, z: 0.9999999}
     - name: finger_thumb_2_R
       parentName: finger_thumb_1_R
