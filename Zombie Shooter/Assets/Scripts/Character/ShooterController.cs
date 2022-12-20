@@ -163,7 +163,7 @@ public class ShooterController : MonoBehaviour
 
         if (_input.nvg)
         {
-            nvg.ActivateOrDeactivate();
+            nvg.ActivateOrDeactivateDevice();
             _input.nvg = false;
         }
     }

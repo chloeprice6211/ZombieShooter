@@ -21,20 +21,22 @@ public class NVG : HelmetDevice
         _animation = lens.GetComponent<Animation>();
     }
 
-    public void ActivateOrDeactivate()
+    public override void ActivateOrDeactivateDevice()
     {
+        Debug.Log("called");
+        isOn = !isOn;
+
         if (isOn)
-        {
-            _animation.Play(deactivateNVGClip.name);
-            volume.profile = regularVolumeProfile;
-        }
-        else
         {
             _animation.Play(activateNVGClip.name);
             volume.profile = nvgVolumeProfile;
+            StartCoroutine(ChargeDecayRoutine(this));
         }
-
-        base.ActivateOrDeactivateDevice();
-        
+        else
+        {
+            _animation.Play(deactivateNVGClip.name);
+            volume.profile = regularVolumeProfile;
+            StartCoroutine(ChargeGainRoutine());
+        }
     }
 }

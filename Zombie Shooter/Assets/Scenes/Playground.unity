@@ -6452,6 +6452,11 @@ PrefabInstance:
       objectReference: {fileID: 637738648}
     - target: {fileID: 3248783999654885350, guid: 57c50671f65374f4f999ce269984d07c,
         type: 3}
+      propertyPath: decayRate
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248783999654885350, guid: 57c50671f65374f4f999ce269984d07c,
+        type: 3}
       propertyPath: nvgVolumeProfile
       value: 
       objectReference: {fileID: 11400000, guid: 74587a9b2e332af43881785a01dd282f,
@@ -6462,6 +6467,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 994573664b9ff704fb3a63f9581d8943,
         type: 2}
+    - target: {fileID: 3586532357037781738, guid: 57c50671f65374f4f999ce269984d07c,
+        type: 3}
+      propertyPath: decayRate
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4292715896780308565, guid: 57c50671f65374f4f999ce269984d07c,
         type: 3}
       propertyPath: m_Range

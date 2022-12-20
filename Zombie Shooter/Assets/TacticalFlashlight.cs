@@ -16,17 +16,19 @@ public class TacticalFlashlight : HelmetDevice
 
     public override void ActivateOrDeactivateDevice()
     {
+        isOn = !isOn;
+
         if (isOn)
         {
             audioSource.PlayOneShot(toggleAudio);
-            lightSource.enabled = false;
+            lightSource.enabled = true;
+            StartCoroutine(ChargeDecayRoutine(this));
         }
         else
         {
             audioSource.PlayOneShot(toggleAudio);
-            lightSource.enabled = true;
-        }
-
-        base.ActivateOrDeactivateDevice();
+            lightSource.enabled = false;
+            StartCoroutine(ChargeGainRoutine());
+        } 
     }
 }
