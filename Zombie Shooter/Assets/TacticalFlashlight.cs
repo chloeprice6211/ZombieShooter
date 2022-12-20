@@ -16,6 +16,8 @@ public class TacticalFlashlight : HelmetDevice
 
     public override void ActivateOrDeactivateDevice()
     {
+        if (!isOn && batteryCharge <= minimalCharge) return;
+
         isOn = !isOn;
 
         if (isOn)

@@ -23,7 +23,8 @@ public class NVG : HelmetDevice
 
     public override void ActivateOrDeactivateDevice()
     {
-        Debug.Log("called");
+        if (!isOn && batteryCharge <= minimalCharge) return;
+
         isOn = !isOn;
 
         if (isOn)

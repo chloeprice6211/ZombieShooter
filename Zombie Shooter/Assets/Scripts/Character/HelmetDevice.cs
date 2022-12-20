@@ -7,6 +7,7 @@ public abstract class HelmetDevice : MonoBehaviour
     public bool isOn;
     public float batteryCharge = 100f;
     public float decayRate = 1f;
+    public float minimalCharge = 15f;
 
     public abstract void ActivateOrDeactivateDevice();
 
