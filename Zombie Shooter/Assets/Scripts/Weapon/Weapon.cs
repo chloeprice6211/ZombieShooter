@@ -5,48 +5,40 @@ using UnityEngine.Animations.Rigging;
 
 public class Weapon : MonoBehaviour
 {
-    // components
+    [Header("components")]
     public BulletProjectile bullet;
     public Transform firePosition;
     public Transform supportHandPos;
     public Transform muzzleFlash;
     public Sprite weaponIcon;
 
-    // mag animation
-    [Space]
-    public GameObject magazine;
+    [Header("mag information")]
+    public WeaponMag magazine;
     public Animation magReloadAnimation;
     public Transform magHolder;
-    [SerializeField] GameObject currentMag;
+    [SerializeField] WeaponMag currentMag;
+    [SerializeField] AnimationClip insertMagClip;
+    public bool isReloading;
 
-    // stats
-    [Space]
+    [Header("weapon stats")]
     public string weaponName;
     public float ammoCapacity;
     public float fireRate = .5f;
     public float currentAmmo;
 
-    //audio
+    [Header("audio")]
     [SerializeField] AudioSource shootAudioSource;
     [SerializeField] AudioSource reloadAudioSource;
-
     [SerializeField] AudioClip shootSound;
-
-    public bool isReloading;
 
     bool _canShoot = true;
     float _timeElapsed;
 
-    Rig _weaponSupportRig;
-
-    [SerializeField] AnimationClip insertMagClip; 
-
 
     private void Start()
     {
-        currentAmmo = ammoCapacity;
+        currentAmmo = magazine.ammoCapacity;
     }
-
     private void Update()
     {
         if (!_canShoot)
@@ -58,6 +50,7 @@ public class Weapon : MonoBehaviour
             }
         }
     }
+
 
     public void FireProjectile(Vector3 targetPosition)
     {
@@ -77,32 +70,24 @@ public class Weapon : MonoBehaviour
         Instantiate(muzzleFlash, firePosition.position, Quaternion.LookRotation(target, Vector3.up), firePosition);
     }
 
-    public void Reload(Rig handRig)
+
+    public void Reload()
     {
         reloadAudioSource.Play();
-        _weaponSupportRig = handRig;
         StartCoroutine(ReloadRoutine());
     }
-
     IEnumerator ReloadRoutine()
     {
         isReloading = true;
 
-        while (_weaponSupportRig.weight > 0)
-        {
-            _weaponSupportRig.weight -= Time.deltaTime * 5;
-            yield return null;
-        }
-
         currentMag.GetComponent<Animation>().Play("MagazineReload");
+        currentMag.DropMag();
 
         yield return new WaitForSeconds(.5f);
         currentMag.transform.SetParent(null);
 
         yield return new WaitForSeconds(1f);
-        GameObject newMag = Instantiate(magazine, magHolder);
-        newMag.transform.localPosition = Vector3.zero;
-        newMag.transform.localRotation = Quaternion.identity;
+        WeaponMag newMag = Instantiate(magazine, Vector3.zero, Quaternion.identity, magHolder);
         magReloadAnimation = newMag.GetComponent<Animation>();
         magReloadAnimation.Play(insertMagClip.name);
 
@@ -110,17 +95,11 @@ public class Weapon : MonoBehaviour
         
         yield return new WaitForSeconds(1.2f);
 
-        currentAmmo = ammoCapacity;
-        
-        UIManager.Instance.UpdateWeaponCurrentAmmo(currentAmmo);
-
+        currentAmmo = magazine.ammoCapacity;
         isReloading = false;
 
-        while(_weaponSupportRig.weight < 1)
-        {
-            _weaponSupportRig.weight += Time.deltaTime * 5;
-            yield return null;
-        } 
+        UIManager.Instance.UpdateWeaponCurrentAmmo(currentAmmo);
+
     }
 
 }

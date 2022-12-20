@@ -54,13 +54,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496921592066692346}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7251, y: 0.1585, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.6141505, z: -5.7719126}
+  m_LocalScale: {x: 11.0657835, y: 11.0657835, z: 11.0657835}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8375097717164487647}
-  m_RootOrder: 1
+  m_Father: {fileID: 8283257110441014785}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1624667354389879342
 GameObject:
@@ -420,13 +420,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6380743775205308355}
-  m_LocalRotation: {x: 0.18809666, y: -0.8158576, z: -0.07721004, w: 0.5413267}
-  m_LocalPosition: {x: 0.3167, y: 0.0825, z: 0.0345}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.07840869, y: -0.19412267, z: -0.18760017, w: 0.95967424}
+  m_LocalPosition: {x: 0.38176832, y: -0.22684878, z: -1.2526464}
+  m_LocalScale: {x: 11.0657835, y: 11.065783, z: 11.0657835}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8375097717164487647}
-  m_RootOrder: 2
+  m_Father: {fileID: 8283257110441014785}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 4.454, y: -113.78, z: -23.06}
 --- !u!1 &6424876855057388318
 GameObject:
@@ -486,12 +486,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6701997819246512586}
   m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.2035, y: 0.103, z: 0}
-  m_LocalScale: {x: 0.09036865, y: 0.09036865, z: 0.09036865}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 7.85, y: 3.14, z: -0}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7045845896848348977}
   - {fileID: 851487963347636270}
+  - {fileID: 8350416263333407044}
+  - {fileID: 4491013171533540942}
   m_Father: {fileID: 8375097717164487647}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -507,6 +509,7 @@ GameObject:
   - component: {fileID: 7620471536682370886}
   - component: {fileID: 7690637864962586100}
   - component: {fileID: 4116231534312722729}
+  - component: {fileID: 537437231294812639}
   m_Layer: 0
   m_Name: Stanag
   m_TagString: Untagged
@@ -568,7 +571,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6864195525112712054}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -576,6 +579,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &537437231294812639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6864195525112712054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4e32040ee7c7a42a9744269d43a085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoCapacity: 30
 --- !u!1 &8456845962692640092
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,8 +771,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8283257110441014785}
-  - {fileID: 8350416263333407044}
-  - {fileID: 4491013171533540942}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -777,11 +791,13 @@ MonoBehaviour:
   supportHandPos: {fileID: 4491013171533540942}
   muzzleFlash: {fileID: 400000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}
   weaponIcon: {fileID: 21300000, guid: c8d17656594418c4288bd53d355d3780, type: 3}
-  magazine: {fileID: 3400786838023360809, guid: cb4a6447ed982c344bf2a6410da2918b,
+  magazine: {fileID: 7267207044779981987, guid: cb4a6447ed982c344bf2a6410da2918b,
     type: 3}
   magReloadAnimation: {fileID: 7620471536682370886}
   magHolder: {fileID: 3866140181130742363}
-  currentMag: {fileID: 6864195525112712054}
+  currentMag: {fileID: 537437231294812639}
+  insertMagClip: {fileID: 7400000, guid: 08a6687aa00b6e546b6de07489044906, type: 2}
+  isReloading: 0
   weaponName: AR15
   ammoCapacity: 30
   fireRate: 0.1
@@ -789,8 +805,6 @@ MonoBehaviour:
   shootAudioSource: {fileID: -3970441366622383315}
   reloadAudioSource: {fileID: 2053168709790893309}
   shootSound: {fileID: 8300000, guid: 8b7ac98f62877e34fb13467f61a06f2a, type: 3}
-  isReloading: 0
-  insertMagClip: {fileID: 7400000, guid: 08a6687aa00b6e546b6de07489044906, type: 2}
 --- !u!82 &-3970441366622383315
 AudioSource:
   m_ObjectHideFlags: 0

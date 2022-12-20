@@ -50,7 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d605c64e4cd3d4d9fb4157df3579a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthAmount: 200
+  healthAmount: 75
+  currentHealth: 0
   hpFillImage: {fileID: 6532870459027443501}
   player: {fileID: 0}
 --- !u!195 &8845931334711618234
@@ -63,7 +64,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.7
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
