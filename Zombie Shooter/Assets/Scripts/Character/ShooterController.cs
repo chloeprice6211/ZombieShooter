@@ -63,7 +63,7 @@ public class ShooterController : MonoBehaviour
             aimVirtualCamera.gameObject.SetActive(true);
 
             Vector3 worldAimTarget = _aimHitPoint;
-            aimVirtualTarget.position = Vector3.Lerp(aimVirtualTarget.position, _aimHitPoint, Time.deltaTime * 5);
+            aimVirtualTarget.position = Vector3.Lerp(aimVirtualTarget.position, _aimHitPoint, Time.deltaTime * 10);
             worldAimTarget.y = transform.position.y;
 
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;

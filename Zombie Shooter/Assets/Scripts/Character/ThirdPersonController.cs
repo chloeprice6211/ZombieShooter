@@ -111,7 +111,8 @@ namespace StarterAssets
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
 
-        private const float _threshold = 0.01f;
+        bool _canSprint;
+        public float minimalStaminaCap = 30f;
 
         private bool _hasAnimator;
 
@@ -220,21 +221,30 @@ namespace StarterAssets
 
         private void Move()
         {
-            float targetSpeed = _input.sprint && Stamina > 0 && !_input.aim ? SprintSpeed : MoveSpeed;
+            float targetSpeed = _input.sprint && Stamina > 0 && !_input.aim && _canSprint? SprintSpeed : MoveSpeed;
 
             if(targetSpeed == SprintSpeed)
             {
-                StaminaRegen(-10);
+                StaminaRegen(-20);
             }
 
             if (_input.move == Vector2.zero)
             {
-                StaminaRegen(25);
+                StaminaRegen(35);
                 targetSpeed = 0.0f;
             }
             else if (targetSpeed == MoveSpeed)
             {
-                StaminaRegen(10);
+                StaminaRegen(12);
+            }
+
+            if(!_input.sprint && Stamina < minimalStaminaCap)
+            {
+                _canSprint = false;
+            }
+            else if(Stamina > minimalStaminaCap)
+            {
+                _canSprint = true;
             }
 
             // a reference to the players current horizontal velocity
@@ -303,6 +313,10 @@ namespace StarterAssets
             {
                 Stamina = 100;
             }
+            else if(Stamina <= 0)
+            {
+                _canSprint = false;
+            }
 
             Stamina += regenValue * Time.deltaTime;
             UIManager.Instance.DisplayStaminaState(Stamina);
@@ -329,12 +343,12 @@ namespace StarterAssets
                 }
 
                 // Jump
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f && Stamina > 25)
+                if (_input.jump && _jumpTimeoutDelta <= 0.0f && Stamina > minimalStaminaCap)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
-                    StaminaRegen(-300);
+                    StaminaRegen(-1500);
 
                     // update animator if using character
                     if (_hasAnimator)

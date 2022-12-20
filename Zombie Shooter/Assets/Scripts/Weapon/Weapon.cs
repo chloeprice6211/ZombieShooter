@@ -95,10 +95,10 @@ public class Weapon : MonoBehaviour
         
         yield return new WaitForSeconds(1.2f);
 
-        UIManager.Instance.UpdateWeaponCurrentAmmo(currentAmmo);
-
         currentAmmo = magazine.ammoCapacity;
         isReloading = false;
+
+        UIManager.Instance.UpdateWeaponCurrentAmmo(currentAmmo);
 
     }
 
