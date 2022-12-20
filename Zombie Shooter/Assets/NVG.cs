@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class NVG : HelmetDevice
 {
@@ -9,6 +10,11 @@ public class NVG : HelmetDevice
 
     [SerializeField] AnimationClip activateNVGClip;
     [SerializeField] AnimationClip deactivateNVGClip;
+
+    [SerializeField] Volume volume;
+
+    [SerializeField] VolumeProfile regularVolumeProfile;
+    [SerializeField] VolumeProfile nvgVolumeProfile;
 
     private void Awake()
     {
@@ -20,10 +26,12 @@ public class NVG : HelmetDevice
         if (isOn)
         {
             _animation.Play(deactivateNVGClip.name);
+            volume.profile = regularVolumeProfile;
         }
         else
         {
             _animation.Play(activateNVGClip.name);
+            volume.profile = nvgVolumeProfile;
         }
 
         base.ActivateOrDeactivateDevice();
