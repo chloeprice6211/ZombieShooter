@@ -225,7 +225,7 @@ namespace StarterAssets
 
             if(targetSpeed == SprintSpeed)
             {
-                StaminaRegen(-20);
+                StaminaRegen(-10);
             }
 
             if (_input.move == Vector2.zero)
