@@ -22,15 +22,17 @@ public class TacticalFlashlight : HelmetDevice
 
         if (isOn)
         {
+            UIManager.Instance.ChangeDeviceImage(category, true);
             audioSource.PlayOneShot(toggleAudio);
             lightSource.enabled = true;
             StartCoroutine(ChargeDecayRoutine(this));
         }
         else
         {
+            UIManager.Instance.ChangeDeviceImage(category, false);
             audioSource.PlayOneShot(toggleAudio);
             lightSource.enabled = false;
-            StartCoroutine(ChargeGainRoutine());
+            StartCoroutine(ChargeGainRoutine(this));
         } 
     }
 }

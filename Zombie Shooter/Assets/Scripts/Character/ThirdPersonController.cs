@@ -319,7 +319,7 @@ namespace StarterAssets
             }
 
             Stamina += regenValue * Time.deltaTime;
-            UIManager.Instance.DisplayStaminaState(Stamina);
+            UIManager.Instance.DisplayFilledImageState(Stamina, FillImageCategory.Stamina, 100);
         }
 
         private void JumpAndGravity()

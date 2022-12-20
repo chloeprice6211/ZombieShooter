@@ -29,15 +29,17 @@ public class NVG : HelmetDevice
 
         if (isOn)
         {
+            UIManager.Instance.ChangeDeviceImage(category, true);
             _animation.Play(activateNVGClip.name);
             volume.profile = nvgVolumeProfile;
             StartCoroutine(ChargeDecayRoutine(this));
         }
         else
         {
+            UIManager.Instance.ChangeDeviceImage(category, false);
             _animation.Play(deactivateNVGClip.name);
             volume.profile = regularVolumeProfile;
-            StartCoroutine(ChargeGainRoutine());
+            StartCoroutine(ChargeGainRoutine(this));
         }
     }
 }
