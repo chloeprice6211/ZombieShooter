@@ -11,6 +11,8 @@ public class NVG : HelmetDevice
     [SerializeField] AnimationClip activateNVGClip;
     [SerializeField] AnimationClip deactivateNVGClip;
 
+    [SerializeField] AudioClip nvgActivateSound;
+
     [SerializeField] Volume volume;
 
     [SerializeField] VolumeProfile regularVolumeProfile;
@@ -29,6 +31,7 @@ public class NVG : HelmetDevice
 
         if (isOn)
         {
+            AudioSource.PlayClipAtPoint(nvgActivateSound, transform.position);
             UIManager.Instance.ChangeDeviceImage(category, true);
             _animation.Play(activateNVGClip.name);
             volume.profile = nvgVolumeProfile;
