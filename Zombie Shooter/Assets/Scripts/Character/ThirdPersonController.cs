@@ -33,7 +33,8 @@ namespace StarterAssets
         public float SpeedChangeRate = 10.0f;
 
         public AudioClip LandingAudioClip;
-        public AudioClip[] FootstepAudioClips;
+        public AudioClip[] GroundFootstepsClips;
+        public AudioClip[] SnowFootstepsClips;
         [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
 
         [Space(10)]
@@ -143,7 +144,7 @@ namespace StarterAssets
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
+
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -221,9 +222,9 @@ namespace StarterAssets
 
         private void Move()
         {
-            float targetSpeed = _input.sprint && Stamina > 0 && !_input.aim && _canSprint? SprintSpeed : MoveSpeed;
+            float targetSpeed = _input.sprint && Stamina > 0 && !_input.aim && _canSprint ? SprintSpeed : MoveSpeed;
 
-            if(targetSpeed == SprintSpeed)
+            if (targetSpeed == SprintSpeed)
             {
                 StaminaRegen(-7);
             }
@@ -238,11 +239,11 @@ namespace StarterAssets
                 StaminaRegen(20);
             }
 
-            if(!_input.sprint && Stamina < minimalStaminaCap)
+            if (!_input.sprint && Stamina < minimalStaminaCap)
             {
                 _canSprint = false;
             }
-            else if(Stamina > minimalStaminaCap)
+            else if (Stamina > minimalStaminaCap)
             {
                 _canSprint = true;
             }
@@ -309,11 +310,11 @@ namespace StarterAssets
 
         private void StaminaRegen(float regenValue)
         {
-            if(Stamina > 100)
+            if (Stamina > 100)
             {
                 Stamina = 100;
             }
-            else if(Stamina <= 0)
+            else if (Stamina <= 0)
             {
                 _canSprint = false;
             }
@@ -425,10 +426,21 @@ namespace StarterAssets
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
-                if (FootstepAudioClips.Length > 0)
+                if (GroundFootstepsClips.Length > 0)
                 {
-                    var index = Random.Range(0, FootstepAudioClips.Length);
-                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                    Ray ray = new Ray(transform.position + Vector3.up, Vector3.down);
+                    Physics.Raycast(ray, out RaycastHit hitInfo, 5);
+
+                    if (hitInfo.collider.CompareTag("Ground/Snow"))
+                    {
+                        var index = Random.Range(0, SnowFootstepsClips.Length);
+                        AudioSource.PlayClipAtPoint(SnowFootstepsClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                    }
+                    else
+                    {
+                        var index = Random.Range(0, GroundFootstepsClips.Length);
+                        AudioSource.PlayClipAtPoint(GroundFootstepsClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                    }
                 }
             }
         }
