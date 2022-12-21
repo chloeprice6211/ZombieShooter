@@ -8,6 +8,8 @@ public class OutdoorTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag != "Player") return;
+
         if (!weather.isOutdoor) return;
         weather.isOutdoor = false;
 
