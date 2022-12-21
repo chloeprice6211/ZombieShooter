@@ -10,11 +10,10 @@ public class Enemy : MonoBehaviour
     public float healthAmount = 100f;
     public float currentHealth;
 
-    [SerializeField] Image hpFillImage;
     NavMeshAgent _agent;
     Ragdoll _ragdoll;
 
-    [SerializeField] GameObject player;
+    GameObject _player;
 
     private void Start()
     {
@@ -22,20 +21,18 @@ public class Enemy : MonoBehaviour
         currentHealth = healthAmount;
         _ragdoll = GetComponent<Ragdoll>();
 
-        player = GameObject.FindGameObjectWithTag("Player");
-
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
         if (!_agent.enabled) return;
-
         ChasePlayer();
     }
 
     void ChasePlayer()
     {
-        _agent.SetDestination(player.transform.position);
+        _agent.SetDestination(_player.transform.position);
     }
 
     public void OnDeath()
@@ -49,8 +46,6 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-
-        hpFillImage.fillAmount = currentHealth / healthAmount;
 
         if(currentHealth < 1)
         {
