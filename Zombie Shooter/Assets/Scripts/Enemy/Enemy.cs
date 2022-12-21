@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -10,10 +11,15 @@ public class Enemy : MonoBehaviour
     public float healthAmount = 100f;
     public float currentHealth;
 
+    [SerializeField] Transform attackPos;
+    [SerializeField] LayerMask playerMask;
+
     NavMeshAgent _agent;
     Ragdoll _ragdoll;
 
     GameObject _player;
+
+    Collider[] colliders;
 
     private void Start()
     {
@@ -32,7 +38,25 @@ public class Enemy : MonoBehaviour
 
     void ChasePlayer()
     {
-        _agent.SetDestination(_player.transform.position);
+        if(Vector3.Distance(transform.position, _player.transform.position) < 2)
+        {
+            Debug.Log("ATTACKED");
+            Attack();
+        }
+        else
+        {
+            _agent.SetDestination(_player.transform.position);
+        }
+    }
+
+    void Attack()
+    {
+       Collider[] playerColliders = Physics.OverlapSphere(attackPos.position, 3, 1 << 8);
+
+        if(playerColliders.Length > 0)
+        {
+            Debug.Log(playerColliders.Length);
+        }
     }
 
     public void OnDeath()
