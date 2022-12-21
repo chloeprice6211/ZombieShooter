@@ -6,7 +6,7 @@ using Cinemachine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.Animations;
 
-public class ShooterController : MonoBehaviour
+public class ShooterController : MonoBehaviour, IDamagable
 {
     // controllers
     StarterAssetsInputs _input;
@@ -33,6 +33,7 @@ public class ShooterController : MonoBehaviour
     Animator _animator;
 
     [Header("misc")]
+    public float healthPoints;
     public Weapon currentWeapon;
     Vector3 _aimHitPoint = Vector3.zero;
 
@@ -232,5 +233,19 @@ public class ShooterController : MonoBehaviour
             SetWeapon(GameManager.Instance.Weapons[3]);
         }
 
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if(healthPoints - damage < 1)
+        {
+            OnDeath();
+        }
+        healthPoints -= damage;
+    }
+
+    public void OnDeath()
+    {
+        Debug.Log("dead");
     }
 }

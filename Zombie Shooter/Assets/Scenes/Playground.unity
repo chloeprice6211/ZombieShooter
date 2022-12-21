@@ -17026,7 +17026,7 @@ MonoBehaviour:
   pushLayers:
     serializedVersion: 2
     m_Bits: 0
-  canPush: 0
+  canPush: 1
   strength: 1.1
 --- !u!4 &5918524297141052947
 Transform:
@@ -18360,6 +18360,7 @@ MonoBehaviour:
   weaponHolder: {fileID: 1458777277}
   flashlight: {fileID: 1186904708}
   nvg: {fileID: 1435705834}
+  healthPoints: 100
   currentWeapon: {fileID: 0}
 --- !u!114 &6982812147933622151
 MonoBehaviour:

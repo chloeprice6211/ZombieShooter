@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
 {
     public float healthAmount = 100f;
     public float currentHealth;
+    public float damage;
 
     [SerializeField] Transform attackPos;
     [SerializeField] LayerMask playerMask;
@@ -19,6 +20,8 @@ public class Enemy : MonoBehaviour
     Animator _animator;
 
     GameObject _player;
+
+    ShooterController _playerToDamage;
 
     private void Start()
     {
@@ -60,9 +63,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void OnAttackEnd()
+    public void OnAttackEnd(AnimationEvent animationEvent)
     {
-        Debug.Log("attack ended");
+        _playerToDamage = Physics.OverlapSphere(attackPos.position, 1, 1 << 8)[0].GetComponent<ShooterController>();
+        _playerToDamage.TakeDamage(damage);
     }
 
     void OnDrawGizmosSelected()
