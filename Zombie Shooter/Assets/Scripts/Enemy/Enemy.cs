@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     NavMeshAgent _agent;
     Ragdoll _ragdoll;
 
-    GameObject player;
+    GameObject _player;
 
     private void Start()
     {
@@ -21,20 +21,18 @@ public class Enemy : MonoBehaviour
         currentHealth = healthAmount;
         _ragdoll = GetComponent<Ragdoll>();
 
-        player = GameObject.FindGameObjectWithTag("Player");
-
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
         if (!_agent.enabled) return;
-
         ChasePlayer();
     }
 
     void ChasePlayer()
     {
-        _agent.SetDestination(player.transform.position);
+        _agent.SetDestination(_player.transform.position);
     }
 
     public void OnDeath()
