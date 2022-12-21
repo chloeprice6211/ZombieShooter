@@ -246,6 +246,8 @@ public class ShooterController : MonoBehaviour, IDamagable
 
     public void OnDeath()
     {
+        _animator.SetTrigger("OnDeath");
+        gameObject.layer = 0;
         Debug.Log("dead");
     }
 }
