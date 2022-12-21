@@ -10,11 +10,10 @@ public class Enemy : MonoBehaviour
     public float healthAmount = 100f;
     public float currentHealth;
 
-    [SerializeField] Image hpFillImage;
     NavMeshAgent _agent;
     Ragdoll _ragdoll;
 
-    [SerializeField] GameObject player;
+    GameObject player;
 
     private void Start()
     {
@@ -49,8 +48,6 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-
-        hpFillImage.fillAmount = currentHealth / healthAmount;
 
         if(currentHealth < 1)
         {
