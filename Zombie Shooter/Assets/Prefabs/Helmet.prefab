@@ -48,6 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 0
+  batteryCharge: 100
+  decayRate: 1
+  minimalCharge: 15
+  category: 0
   lightSource: {fileID: 4292715896780308565}
   toggleAudio: {fileID: 8300000, guid: 4b4b60a5f9f6a85449d38042bdf6bca2, type: 3}
 --- !u!82 &4476856495119822476
@@ -649,9 +653,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 0
+  batteryCharge: 100
+  decayRate: 1
+  minimalCharge: 15
+  category: 0
   lens: {fileID: 5599819395228052249}
   activateNVGClip: {fileID: 7400000, guid: 6cac32c03196a3742a4e06e85da7a7db, type: 2}
   deactivateNVGClip: {fileID: 7400000, guid: 1e21e416f979e814cb0bdebf2594d29f, type: 2}
+  nvgActivateSound: {fileID: 8300000, guid: 7d44d102dc317b54a9982bae4de94ef9, type: 3}
+  volume: {fileID: 0}
+  regularVolumeProfile: {fileID: 0}
+  nvgVolumeProfile: {fileID: 0}
 --- !u!1 &1243043777617451874
 GameObject:
   m_ObjectHideFlags: 0
