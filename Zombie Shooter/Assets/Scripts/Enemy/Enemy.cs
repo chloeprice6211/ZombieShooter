@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     NavMeshAgent _agent;
     Ragdoll _ragdoll;
+    Animator _animator;
 
     GameObject _player;
 
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        _animator = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         currentHealth = healthAmount;
         _ragdoll = GetComponent<Ragdoll>();
@@ -40,7 +42,6 @@ public class Enemy : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, _player.transform.position) < 2)
         {
-            Debug.Log("ATTACKED");
             Attack();
         }
         else
@@ -51,12 +52,22 @@ public class Enemy : MonoBehaviour
 
     void Attack()
     {
-       Collider[] playerColliders = Physics.OverlapSphere(attackPos.position, 3, 1 << 8);
+       Collider[] playerColliders = Physics.OverlapSphere(attackPos.position, 1, 1 << 8);
 
         if(playerColliders.Length > 0)
         {
-            Debug.Log(playerColliders.Length);
+            Debug.Log("set trigger");
+            _animator.SetBool("canAttack", true);
         }
+        else
+        {
+            _animator.SetBool("canAttack", false);
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawSphere(attackPos.position, 1);
     }
 
     public void OnDeath()
