@@ -225,17 +225,17 @@ namespace StarterAssets
 
             if(targetSpeed == SprintSpeed)
             {
-                StaminaRegen(-10);
+                StaminaRegen(-7);
             }
 
             if (_input.move == Vector2.zero)
             {
-                StaminaRegen(35);
+                StaminaRegen(45);
                 targetSpeed = 0.0f;
             }
             else if (targetSpeed == MoveSpeed)
             {
-                StaminaRegen(12);
+                StaminaRegen(20);
             }
 
             if(!_input.sprint && Stamina < minimalStaminaCap)
@@ -355,6 +355,8 @@ namespace StarterAssets
                     {
                         _animator.SetBool(_animIDJump, true);
                     }
+
+                    _input.jump = false;
                 }
 
                 // jump timeout
