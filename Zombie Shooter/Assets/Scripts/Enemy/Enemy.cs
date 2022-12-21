@@ -20,8 +20,6 @@ public class Enemy : MonoBehaviour
 
     GameObject _player;
 
-    Collider[] colliders;
-
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -42,10 +40,12 @@ public class Enemy : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, _player.transform.position) < 2)
         {
+            transform.LookAt(_player.transform);
             Attack();
         }
         else
         {
+            _animator.SetBool("canAttack", false);
             _agent.SetDestination(_player.transform.position);
         }
     }
@@ -56,13 +56,13 @@ public class Enemy : MonoBehaviour
 
         if(playerColliders.Length > 0)
         {
-            Debug.Log("set trigger");
             _animator.SetBool("canAttack", true);
         }
-        else
-        {
-            _animator.SetBool("canAttack", false);
-        }
+    }
+
+    public void OnAttackEnd()
+    {
+        Debug.Log("attack ended");
     }
 
     void OnDrawGizmosSelected()
