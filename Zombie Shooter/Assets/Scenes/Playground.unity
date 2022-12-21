@@ -5030,7 +5030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1356671473
 Transform:
   m_ObjectHideFlags: 0
@@ -5068,7 +5068,7 @@ MonoBehaviour:
   - {fileID: 237381224}
   - {fileID: 1045698744}
   - {fileID: 522220817}
-  spawnRate: 1.5
+  spawnRate: 5
 --- !u!1 &1359078714
 GameObject:
   m_ObjectHideFlags: 0
