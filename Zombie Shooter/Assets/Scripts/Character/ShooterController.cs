@@ -8,27 +8,34 @@ using UnityEngine.Animations;
 
 public class ShooterController : MonoBehaviour
 {
+    // controllers
     StarterAssetsInputs _input;
     ThirdPersonController _thirdPersonController;
 
+    [Header("aim components")]
     [SerializeField] CinemachineVirtualCamera aimVirtualCamera;
     [SerializeField] LayerMask aimColliderMask;
     [SerializeField] Transform aimVirtualTarget;
 
-    [SerializeField] Transform weaponHolder;
-
-    // IK
+    [Header("inverse kinematics")]
     [SerializeField] TwoBoneIKConstraint weaponSupportHandConstraint;
     [SerializeField] RigBuilder rigBuilder;
     [SerializeField] Rig aimRig;
     [SerializeField] Rig weaponSupportHandRig;
+    [SerializeField] Transform weaponHolder;
+
+    [Header("helmet devices")]
+    [SerializeField] TacticalFlashlight flashlight;
+    [SerializeField] NVG nvg;
 
     // animator related
     int _reloadHash;
     Animator _animator;
 
+    [Header("misc")]
     public Weapon currentWeapon;
     Vector3 _aimHitPoint = Vector3.zero;
+
 
     private void Awake()
     {
@@ -52,6 +59,7 @@ public class ShooterController : MonoBehaviour
         Aim();
         Shoot();
         HandleAimRaycast();
+        HandleHelmetDevice();
     }
 
     private void Aim()
@@ -143,6 +151,20 @@ public class ShooterController : MonoBehaviour
                 yield return null;
             }
 
+        }
+    }
+    private void HandleHelmetDevice()
+    {
+        if (_input.flashlight)
+        {
+            flashlight.ActivateOrDeactivateDevice();
+            _input.flashlight = false;
+        }
+
+        if (_input.nvg)
+        {
+            nvg.ActivateOrDeactivateDevice();
+            _input.nvg = false;
         }
     }
 

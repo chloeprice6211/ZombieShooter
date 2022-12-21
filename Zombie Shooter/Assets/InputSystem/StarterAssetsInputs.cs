@@ -15,6 +15,8 @@ namespace StarterAssets
 		public bool aim;
 		public bool shoot;
 		public bool reload;
+		public bool flashlight;
+		public bool nvg;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -47,6 +49,16 @@ namespace StarterAssets
 			SprintInput(value.isPressed);
 		}
 
+		public void OnToggleFlashlight(InputValue value)
+		{
+			FlashlightInput(value.isPressed);
+		}
+
+		public void OnToggleNVG(InputValue value)
+		{
+			NVGInput(value.isPressed);
+		}
+
         public void OnAim(InputValue value)
         {
             AimInput(value.isPressed);
@@ -63,7 +75,15 @@ namespace StarterAssets
 		}
 
 #endif
+		public void FlashlightInput(bool newFlashlightState)
+		{
+			flashlight = newFlashlightState;
+		}
 
+		public void NVGInput(bool newNVGState)
+		{
+			nvg = newNVGState;
+		}
 
         public void MoveInput(Vector2 newMoveDirection)
 		{

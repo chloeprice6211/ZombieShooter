@@ -10,10 +10,15 @@ public class UIManager : MonoBehaviour
     static UIManager _instance;
 
     [SerializeField] Image staminaStateFilledImg;
+    [SerializeField] Image nvgStateFilledImg;
+    [SerializeField] Image flashlightStateFilledImg;
 
     [SerializeField] Image weaponIconImage;
     [SerializeField] TextMeshProUGUI currentAmmo;
     [SerializeField] TextMeshProUGUI maxAmmo;
+
+    [SerializeField] Image NVGIcon;
+    [SerializeField] Image flashlightIcon;
 
     public static UIManager Instance
     {
@@ -28,9 +33,24 @@ public class UIManager : MonoBehaviour
         _instance = this;
     }
 
-    public void DisplayStaminaState(float currentStaminaState)
+    public void DisplayFilledImageState(float currentValue, FillImageCategory fillImageCategory, float maxValue)
     {
-        staminaStateFilledImg.fillAmount = Mathf.Lerp(staminaStateFilledImg.fillAmount, currentStaminaState/100, Time.deltaTime * 4);
+        Image fillImage = null;
+
+        switch (fillImageCategory)
+        {
+            case FillImageCategory.Stamina:
+                fillImage = staminaStateFilledImg;
+                break;
+            case FillImageCategory.NVG:
+                fillImage = nvgStateFilledImg;
+                break;
+            case FillImageCategory.Flashlight:
+                fillImage = flashlightStateFilledImg;
+                break;
+        }
+
+        fillImage.fillAmount = Mathf.Lerp(fillImage.fillAmount, currentValue/maxValue, Time.deltaTime * 4);
     }
 
     public void SetWeaponUI(Weapon weapon)
@@ -44,4 +64,24 @@ public class UIManager : MonoBehaviour
     {
         currentAmmo.text = amount.ToString();
     }
+
+    public void ChangeDeviceImage(FillImageCategory category, bool isActive)
+    {
+        switch (category)
+        {
+            case FillImageCategory.NVG:
+                NVGIcon.color = isActive ? Color.green : Color.white;
+                break;
+            case FillImageCategory.Flashlight:
+                flashlightIcon.color = isActive ? Color.green : Color.white;
+                break;
+        }
+    }
+
+}
+public enum FillImageCategory
+{
+    Stamina,
+    NVG,
+    Flashlight
 }
