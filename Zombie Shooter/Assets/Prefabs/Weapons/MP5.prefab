@@ -106,14 +106,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2179372953984454849}
-  m_LocalRotation: {x: 0, y: -0.91499835, z: 0, w: 0.4034576}
-  m_LocalPosition: {x: 0.157, y: 0.099, z: 0.06}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: -0.3273251, z: 0, w: 0.94491184}
+  m_LocalPosition: {x: 0.496, y: -0.171, z: -1.403}
+  m_LocalScale: {x: 0.22222216, y: 0.22222224, z: 0.22222216}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5156359393481670311}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -132.411, z: 0}
+  m_Father: {fileID: 8907296557310635378}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: -38.213, z: 0}
 --- !u!1 &2708865917865765140
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 6222838895951001566}
   - component: {fileID: 6745731394170031642}
   - component: {fileID: 5291364174394670860}
+  - component: {fileID: 7227268200428334671}
   m_Layer: 0
   m_Name: SmgMag
   m_TagString: Untagged
@@ -246,6 +247,19 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &7227268200428334671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2708865917865765140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4e32040ee7c7a42a9744269d43a085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoCapacity: 30
 --- !u!1 &2975852522831937611
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,13 +398,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4028240847522166309}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.41145056, y: 0.12810111, z: -0.0029000044}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.34, z: -3.06}
+  m_LocalScale: {x: 0.22222222, y: 0.22222224, z: 0.22222222}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 5156359393481670311}
-  m_RootOrder: 2
+  m_Father: {fileID: 8907296557310635378}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6733433508998435566
 GameObject:
@@ -839,8 +853,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8907296557310635378}
-  - {fileID: 2973701790573797728}
-  - {fileID: 4739440565260070160}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -861,11 +873,13 @@ MonoBehaviour:
   supportHandPos: {fileID: 2973701790573797728}
   muzzleFlash: {fileID: 400000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}
   weaponIcon: {fileID: 21300000, guid: 3286542d76d204c498a3db1576d93dd9, type: 3}
-  magazine: {fileID: 6781304821059161469, guid: 0905f3bd3f65009469f2824368fd612f,
+  magazine: {fileID: 4934932111822981127, guid: 0905f3bd3f65009469f2824368fd612f,
     type: 3}
   magReloadAnimation: {fileID: 5291364174394670860}
   magHolder: {fileID: 4714743378478505635}
-  currentMag: {fileID: 2708865917865765140}
+  currentMag: {fileID: 7227268200428334671}
+  insertMagClip: {fileID: 7400000, guid: 7ba306415c7c05b4ba443dc2424cc92a, type: 2}
+  isReloading: 0
   weaponName: MP5
   ammoCapacity: 30
   fireRate: 0.1
@@ -873,8 +887,6 @@ MonoBehaviour:
   shootAudioSource: {fileID: 2757936664745450391}
   reloadAudioSource: {fileID: 6847614769832602053}
   shootSound: {fileID: 8300000, guid: a479311dce393bd42827523468eca540, type: 3}
-  isReloading: 0
-  insertMagClip: {fileID: 7400000, guid: 7ba306415c7c05b4ba443dc2424cc92a, type: 2}
 --- !u!82 &2757936664745450391
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1174,8 +1186,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8130901313203419080}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.0423, y: 0.08730459, z: -0.0029}
-  m_LocalScale: {x: 0.11656158, y: 0.11656158, z: 0.11656158}
+  m_LocalPosition: {x: 2.28, y: 2.43, z: -0}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2709521607822094369}
@@ -1189,6 +1201,8 @@ Transform:
   - {fileID: 1674166300808939133}
   - {fileID: 4200482871216957945}
   - {fileID: 4714743378478505635}
+  - {fileID: 2973701790573797728}
+  - {fileID: 4739440565260070160}
   m_Father: {fileID: 5156359393481670311}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}

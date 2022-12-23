@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -9,14 +10,22 @@ public class Enemy : MonoBehaviour
 {
     public float healthAmount = 100f;
     public float currentHealth;
+    public float damage;
+
+    [SerializeField] Transform attackPos;
+    [SerializeField] LayerMask playerMask;
 
     NavMeshAgent _agent;
     Ragdoll _ragdoll;
+    Animator _animator;
 
     GameObject _player;
 
+    ShooterController _playerToDamage;
+
     private void Start()
     {
+        _animator = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         currentHealth = healthAmount;
         _ragdoll = GetComponent<Ragdoll>();
@@ -32,7 +41,37 @@ public class Enemy : MonoBehaviour
 
     void ChasePlayer()
     {
-        _agent.SetDestination(_player.transform.position);
+        if(Vector3.Distance(transform.position, _player.transform.position) < 2)
+        {
+            transform.LookAt(_player.transform);
+            Attack();
+        }
+        else
+        {
+            _animator.SetBool("canAttack", false);
+            _agent.SetDestination(_player.transform.position);
+        }
+    }
+
+    void Attack()
+    {
+       Collider[] playerColliders = Physics.OverlapSphere(attackPos.position, 1, 1 << 8);
+
+        if(playerColliders.Length > 0)
+        {
+            _animator.SetBool("canAttack", true);
+        }
+    }
+
+    public void OnAttackEnd(AnimationEvent animationEvent)
+    {
+        _playerToDamage = Physics.OverlapSphere(attackPos.position, 1, 1 << 8)[0].GetComponent<ShooterController>();
+        _playerToDamage.TakeDamage(damage);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawSphere(attackPos.position, 1);
     }
 
     public void OnDeath()
